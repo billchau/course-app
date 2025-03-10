@@ -6,7 +6,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'shadcn-nuxt',
     "@nuxtjs/color-mode",
-    '@nuxt/icon'
+    '@nuxt/icon',
+    '@nuxt/image',
+    '@nuxtjs/supabase',
   ],
   colorMode: {
     classSuffix: "",

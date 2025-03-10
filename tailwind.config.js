@@ -20,6 +20,7 @@ module.exports = {
           black: "#3B3030",
           darkbrown: "#664343",
           brown: "#795757",
+          brownhover: "#604545",
           beige: "#FFF0D1",
         },
         border: "hsl(var(--border))",

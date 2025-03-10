@@ -1,10 +1,3 @@
-<script setup lang="ts">
-</script>
-
 <template>
-    <div>
-        content
-
-        
-    </div>
+    <div class="grow">welcome to Course section </div>
 </template>
