@@ -24,5 +24,13 @@ export default defineNuxtConfig({
      */
     componentDir: './components/ui'
   },
-  
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/',
+      include: ['/content(/*)?'],
+      exclude: [],
+      saveRedirectToCookie: false,
+    }
+  }
 })

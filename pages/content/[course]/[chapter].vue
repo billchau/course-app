@@ -30,7 +30,7 @@ const chapterContent = computed(() => courseItem.value?.chapters.find(chapter =>
 
 definePageMeta({
     middleware:
-        async function ({ params }, from) {
+        [async function ({ params }, from) {
             // async validate({ params }) {
             const course = await useCourse();
 
@@ -56,7 +56,9 @@ definePageMeta({
                 );
             }
             // return true
-        }
+        },
+            'auth'
+        ]
 });
 
 const handleError = () => {

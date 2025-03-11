@@ -15,6 +15,10 @@
         <Icon class="w-8 h-8 mx-4 cursor-pointer" name="logos:facebook"
           @click="externalUrl('https://www.facebook.com')" />
       </div>
+      <div v-if="user" class="absolute right-4 top-4 text-white">
+        <UserCard />
+      </div>
+      <div v-else class="absolute right-4 top-4 text-white"> place holder</div>
     </div>
     <!-- menu -->
     <div class="w-full bg-blue-500 h-12">
@@ -70,6 +74,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import UserCard from "~/components/ui/UserCard.vue";
 
 const externalUrl = async (url: string) => {
   await navigateTo(url, {
@@ -82,4 +87,33 @@ const externalUrl = async (url: string) => {
 useHead({
   title: "B the best",
 });
+
+const user = useSupabaseUser()
+
+const name = computed(
+  () => user.value?.user_metadata.full_name
+)
+const profile = computed(
+  () => user.value?.user_metadata.avatar_url
+)
+
+watchEffect(async () => {
+  if (user.value) {
+    console.log("login", name)
+  }
+});
+
+const { auth } = useSupabaseClient();
+
+const logout = async () => {
+  const { error } = await auth.signOut()
+
+  if (error) {
+    console.error(error)
+    return
+  }
+
+  await navigateTo("/")
+}
+
 </script>
