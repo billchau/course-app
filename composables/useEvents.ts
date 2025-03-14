@@ -1,6 +1,6 @@
-import { type EventsArray } from '~/server/api/events.get';
+import { type Events } from '@prisma/client';
 
 export default async () =>
-  useFetchWithCache<EventsArray>(
+  useFetchWithCache<Events[]>(
     `/api/events`
   );

@@ -2,13 +2,17 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "prisma": {
+    "seed": "npx tsx prisma\\seed.ts"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "netlify": "netlify"
+    "netlify": "netlify",
+    "prisma": "prisma"
   },
   "dependencies": {
     "@nuxt/icon": "^1.10.3",
@@ -16,6 +20,8 @@
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/supabase": "^1.5.0",
     "@nuxtjs/tailwindcss": "^6.13.1",
+    "@prisma/extension-accelerate": "^1.2.2",
+    "@prisma/nuxt": "^0.3.0",
     "@vee-validate/zod": "^4.15.0",
     "@vueuse/core": "^12.8.2",
     "class-variance-authority": "^0.7.1",
@@ -26,6 +32,7 @@
     "reka-ui": "^2.0.2",
     "tailwind-merge": "^3.0.2",
     "tailwindcss-animate": "^1.0.7",
+    "tsx": "^4.19.3",
     "vee-validate": "^4.15.0",
     "vue": "latest",
     "vue-router": "latest",

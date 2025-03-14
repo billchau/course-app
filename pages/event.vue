@@ -23,7 +23,7 @@ import { faker } from '@faker-js/faker'
         <div
           class="w-full flex flex-row bg-btheme-brown h-36 p-2 mb-4 rounded-md cursor-pointer hover:bg-btheme-brownhover">
           <div class="w-1/6">
-            <NuxtImg :src="item.image_url" :placeholder="[30, 20]" width="128" height="128" class="rounded" />
+            <NuxtImg :src="item.imageUrl" :placeholder="[30, 20]" width="128" height="128" class="rounded" />
           </div>
           <div class="w-5/6">
             <div class="text-3xl text-btheme-beige"> ● {{ item.title }}</div>
@@ -31,7 +31,7 @@ import { faker } from '@faker-js/faker'
           </div>
         </div>
       </DialogTrigger>
-      <DialogContent hideClose class="sm:max-w-[525px] bg-btheme-beige text-btheme-darkbrown">
+      <DialogContent class="sm:max-w-[525px] bg-btheme-beige text-btheme-darkbrown">
         <DialogHeader>
           <DialogTitle>{{ item.title }}</DialogTitle>
           <DialogDescription class="text-btheme-brown">
@@ -39,7 +39,7 @@ import { faker } from '@faker-js/faker'
           </DialogDescription>
         </DialogHeader>
         <div class="grid gap-4 py-4">
-          <NuxtImg :src="item.image_url" :placeholder="[30, 20]" width="512" height="512" class="rounded" />
+          <NuxtImg :src="item.imageUrl" :placeholder="[30, 20]" width="512" height="512" class="rounded" />
           {{ item.content }}
         </div>
         <DialogFooter>

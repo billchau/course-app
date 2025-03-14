@@ -1,0 +1,49 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    directUrl = env("DIRECT_URL")
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+}
+
+model Course {
+    id          Int       @id @default(autoincrement())
+    title       String
+    description String
+    chapters    Chapter[]
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+}
+
+model Chapter {
+    id        Int      @id @default(autoincrement())
+    title     String
+    highlight String
+    content   String
+    videoUrl  String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Course    Course?  @relation(fields: [courseId], references: [id])
+    courseId  Int?
+}
+
+model News {
+    id        Int      @id @default(autoincrement())
+    title     String
+    highlight String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Events {
+    id        Int      @id @default(autoincrement())
+    title     String
+    highlight String
+    image     String
+    imageUrl  String
+    content   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

@@ -1,4 +1,4 @@
-import data from "~/server/seed/news"
+import { type News, PrismaClient } from '@prisma/client';
 
 export type NewsArray = {
     id: number;
@@ -6,8 +6,11 @@ export type NewsArray = {
     highlight: string;
 }[]
 
+const prisma = new PrismaClient()
+
 export default defineEventHandler(
-  async (): Promise<NewsArray> => {
-  const newsArray = await data.tweets as NewsArray
-  return newsArray;
+  async (): Promise<News[]> => {
+    
+  // const newsArray = await data.tweets as NewsArray
+  return await prisma.news.findMany()
 });

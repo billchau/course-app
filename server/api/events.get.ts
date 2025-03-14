@@ -1,16 +1,8 @@
-import data from "~/server/seed/events"
-
-export type EventsArray = {
-    id: number;
-    image: string;
-    image_url: string;
-    title: string;
-    highlight: string;
-    content: string;
-}[]
+import { type Events, PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient()
 
 export default defineEventHandler(
-  async (): Promise<EventsArray> => {
-  const eventsArray = await data.events as EventsArray
-  return eventsArray;
+  async (): Promise<Events[]> => {
+  // const eventsArray = await data.events as EventsArray
+  return await prisma.events.findMany();
 });

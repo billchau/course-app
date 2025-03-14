@@ -1,9 +1,9 @@
 <template>
-    <div v-if="chapterContent">
-        <div class="text-3xl mb-4">{{ chapterContent.title }}</div>
-        <div class="text-xl mb-4">{{ chapterContent.video_url }}</div>
-        <div class="text-xl mb-4">{{ chapterContent.highlight }}</div>
-        <div class="text-xl mb-4">{{ chapterContent.content }}</div>
+    <div v-if="course && chapter">
+        <div class="text-3xl mb-4">{{ chapter.title }}</div>
+        <div class="text-xl mb-4">{{ chapter.videoUrl }}</div>
+        <div class="text-xl mb-4">{{ chapter.highlight }}</div>
+        <div class="text-xl mb-4">{{ chapter.content }}</div>
     </div>
     <div v-else>
         <div class="flex flex-col text-4xl">
@@ -21,18 +21,16 @@
 <script lang="ts" setup>
 import useCourse from '~/composables/useCourse';
 
-const course = await useCourse();
-const courseId = useRoute().params.course
-const courseItem = computed(() => course.value.find(course => course.id.toString() === courseId))
-const chapterId = useRoute().params.chapter
-const chapterContent = computed(() => courseItem.value?.chapters.find(chapter => chapter.id.toString() === chapterId))
+const courseId = useRoute().params.course as string
+const chapterId = useRoute().params.chapter as string
 
-
+const course = await useCourse(courseId, chapterId);
+const chapter = course.value.chapters
 definePageMeta({
     middleware:
         [async function ({ params }, from) {
             // async validate({ params }) {
-            const course = await useCourse();
+            const course = await useCourseIndex();
 
             const courseId = params.course
             const courseItem = computed(() => course.value.find(course => course.id.toString() === courseId))

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import useCourse from '~/composables/useCourse';
+import useCourseIndex from '~/composables/useCourseIndex';
 
-const course = await useCourse();
+const course = await useCourseIndex();
 // const resetError = async (error) => {
 //     await navigateTo("/")
 //     error.value = null

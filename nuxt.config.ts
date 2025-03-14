@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/supabase',
+    "@prisma/nuxt",
   ],
   colorMode: {
     classSuffix: "",
