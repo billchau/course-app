@@ -18,7 +18,6 @@
       <div v-if="user" class="absolute right-4 top-4 text-white">
         <UserCard />
       </div>
-      <div v-else class="absolute right-4 top-4 text-white"> place holder</div>
     </div>
     <!-- menu -->
     <div class="w-full bg-blue-500 h-12">
@@ -75,6 +74,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import UserCard from "~/components/ui/UserCard.vue";
+
 
 const externalUrl = async (url: string) => {
   await navigateTo(url, {

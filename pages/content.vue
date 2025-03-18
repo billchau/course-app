@@ -9,10 +9,14 @@ const course = await useCourseIndex();
 // const chapterPath = computed((courseid, chapterid) => {
 //  return /content/couse
 // })
+
+definePageMeta({
+    middleware: 'auth'
+})
 </script>
 
 <template>
-    <div class="p-12 w-full grow flex flex-row max-w-7xl">
+    <div class="p-12 w-full grow flex flex-row max-w-7xl" >
         <!-- navigation -->
         <div class="min-w-[25ch] max-w-[40ch]">
             <div class="mb-8 " v-for="courseItem in course" :key="courseItem.id">
@@ -46,4 +50,5 @@ const course = await useCourseIndex();
             </NuxtErrorBoundary>
         </div>
     </div>
+    
 </template>

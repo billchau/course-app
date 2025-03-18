@@ -1,9 +1,9 @@
 <template>
-    <div v-if="user" class="rounded p-3 flex items-center space-x-3 bg-white">
-        <img class="rounded-full w-12 h-12 border-2 border-blue-400" :src="profile" />
+    <div v-if="user" class="rounded p-3 flex items-center space-x-3 bg-btheme-beige">
+        <img class="rounded-full w-12 h-12 border-2 border-white" :src="profile" />
         <div class="text-right">
-            <div class="font-medium">{{ name }}</div>
-            <button class="text-sm underline text-slate-500" @click="logout">
+            <div class="font-medium text-btheme-brown">{{ name }}</div>
+            <button class="text-sm underline text-btheme-brown" @click="logout">
                 Log out
             </button>
         </div>
@@ -22,13 +22,20 @@ const logout = async () => {
         return;
     }
 
-    await navigateTo('/login');
+    await navigateTo('/');
 };
 
+user.value.email
 const name = computed(
-    () => user.value?.user_metadata.full_name
+    () =>  {
+        if (user.value?.user_metadata.full_name)
+            return user.value?.user_metadata.full_name
+        else {
+            return user.value.email
+        }
+    }
 );
 const profile = computed(
-    () => user.value?.user_metadata.avatar_url
+    () => user.value?.user_metadata.avatar_url ? user.value?.user_metadata.avatar_url : 'bitcoin-logo.png'
 );
 </script>

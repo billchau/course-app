@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { faker } from '@faker-js/faker'
-let person = 'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/62.jpg'
+// import { faker } from '@faker-js/faker'
+// let person = 'https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/male/512/62.jpg'
 //let person = faker.image.personPortrait({ sex: 'male', size: 512 })
 let name = 'CryptoMaxx'
 let slogan = "Bitcoin isn't just a currency; it's a revolution. I sold my car for BTC in 2013 and never looked back. Stay humble, stack sats, and remember: Not your keys, not your coins."
@@ -15,7 +15,7 @@ let backstory = "<div><p>CryptoMaxx, born Maxwell Carter, was a self-taught prog
 <template>
     <div class="p-12 max-w-7xl flex flex-col">
         <div class="flex flex-row">
-            <NuxtImg :src="person" :placeholder="[30, 20]" width="300" height="200" class="rounded" />
+            <NuxtImg src="/protrait.jpg" :placeholder="[30, 30]" width="300" height="300" class="rounded" />
             <div class="ml-12 mt-4">
                 <p class="text-5xl">{{ name }}</p>
                 <p class="text-2xl mt-4">{{ slogan }}</p>

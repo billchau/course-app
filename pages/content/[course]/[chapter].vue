@@ -1,7 +1,9 @@
 <template>
     <div v-if="course && chapter">
         <div class="text-3xl mb-4">{{ chapter.title }}</div>
-        <div class="text-xl mb-4">{{ chapter.videoUrl }}</div>
+        <div class="text-xl mb-4">
+            <iframe width="560" height="315" :src="chapter.videoUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
         <div class="text-xl mb-4">{{ chapter.highlight }}</div>
         <div class="text-xl mb-4">{{ chapter.content }}</div>
     </div>

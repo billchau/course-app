@@ -14,6 +14,11 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
+  nitro: {
+    prerender: {
+      routes: ["/profile"]
+    }
+  },
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -28,9 +33,9 @@ export default defineNuxtConfig({
   supabase: {
     redirectOptions: {
       login: '/login',
-      callback: '/',
+      callback: '/confirm',
       include: ['/content(/*)?'],
-      exclude: [],
+      exclude: ['/content'],
       saveRedirectToCookie: false,
     }
   }
