@@ -59,7 +59,6 @@ const display = ""
 const hasError = computed(() => errorMsg.value.length > 0)
 
 
-
 const validate = async (isSignUp: boolean) => {
     errorMsg.value = []
     let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -90,13 +89,14 @@ async function signInWithEmail() {
     const { data, error } = await supabase.auth.signInWithPassword({
         email: email.value,
         password: pw.value,
+        redirectTo: 'https://localhost:3000/content'
     })
 
     if (error) {
         errorMsg.value.push(error)
-    } else {
-        await navigateTo("/content")
-    }
+        return
+    } 
+    await navigateTo("/content")
 }
 async function signUpNewUser() {
     console.log("signingup")
@@ -120,22 +120,18 @@ const login = async () => {
     const response = await supabase.auth.signInWithOAuth({
         provider: 'github',
     });
-    console.log(response.data)
     if (response.error) {
         console.error(response.error);
     } else {
         await navigateTo("/content")
     }
-    console.log(response.data)
 };
 
-
-
-watchEffect(async () => {
-    if (user.value) {
-        await navigateTo(query.redirectTo as string, {
-            replace: true
-        })
-    }
-});
+// watchEffect(async () => {
+//     if (user.value) {
+//         await navigateTo(query.redirectTo as string, {
+//             replace: true
+//         })
+//     }
+// });
 </script>

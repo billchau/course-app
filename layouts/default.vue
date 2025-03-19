@@ -90,19 +90,6 @@ useHead({
 
 const user = useSupabaseUser()
 
-const name = computed(
-  () => user.value?.user_metadata.full_name
-)
-const profile = computed(
-  () => user.value?.user_metadata.avatar_url
-)
-
-watchEffect(async () => {
-  if (user.value) {
-    console.log("login", name)
-  }
-});
-
 const { auth } = useSupabaseClient();
 
 const logout = async () => {

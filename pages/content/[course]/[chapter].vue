@@ -1,4 +1,5 @@
 <template>
+    <div>
     <div v-if="course && chapter">
         <div class="text-3xl mb-4">{{ chapter.title }}</div>
         <div class="text-xl mb-4">
@@ -18,6 +19,7 @@
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script lang="ts" setup>
@@ -36,7 +38,7 @@ definePageMeta({
 
             const courseId = params.course
             const courseItem = computed(() => course.value.find(course => course.id.toString() === courseId))
-            console.log("courseItem", courseItem.value)
+
             if (!courseItem.value) {
                 return abortNavigation(createError({
                     statusCode: 404,
@@ -47,7 +49,7 @@ definePageMeta({
 
             const chapterId = params.chapter
             const chapterContent = computed(() => courseItem.value?.chapters.find(chapter => chapter.id.toString() === chapterId))
-            console.log("chapterContent", chapterContent.value)
+
             if (!chapterContent.value) {
                 return abortNavigation(createError({
                     statusCode: 404,

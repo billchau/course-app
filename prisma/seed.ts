@@ -178,8 +178,6 @@ async function main() {
       },
     },
   })
-
-  console.log({ news, events, course1, course2, course3 })
 }
 main()
   .then(async () => {

@@ -9,8 +9,9 @@ const { query } = useRoute();
 watch(
   user,
   () => {
+    console.log("cofnrimat and redirect to ", query.redirectTo)
     if (user.value) {
-      console.log("confirm and redirect", query.redirectTo)
+      
       const to = (query.redirectTo as string) ?? '/content';
       return navigateTo(to, {
         replace: true,

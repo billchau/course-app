@@ -19,10 +19,9 @@ export default async <T>(url: string) => {
         statusMessage: `Could not fetch data from ${url}`,
       });
     }
-    console.log("cache data",data.value)
     cached.value = data.value as T;
   } else {
-    console.log(`Getting value from cache for ${url}`);
+    // console.log(`Getting value from cache for ${url}`);
   }
 
   return cached;

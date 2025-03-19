@@ -18,26 +18,7 @@ export default defineEventHandler(
     const chapterId = getRouterParam(event, 'chapter')
 
     protectRoute(event)
-  // const { courseId, chapterId } =  event.context.params?.courseId //old
-  // const coursesArray = await data.courses as CourseArray
 
-  // const courseItem = coursesArray.find(course => course.id.toString() === courseId)
-  // console.log("courseItem in api", courseItem)
-  // if (!courseItem) {
-  //     throw createError({
-  //         statusCode: 404,
-  //         message: 'Chapter not found',
-  //     })
-  // }
-
-  // const chapterContent = courseItem?.chapters.find(chapter => chapter.id.toString() === chapterId)
-  // console.log("chapterContent in api", chapterContent)
-  // if (!chapterContent) {
-  //   throw createError({
-  //         statusCode: 404,
-  //         message: 'Lesson not found',
-  //     })
-  // }
   const isNumeric = (input: string) => /^[+-]?\d+(\.\d+)?$/.test(input)
   if (courseId === undefined || !isNumeric(courseId) || chapterId === undefined || !isNumeric(chapterId)) {
         throw createError({
@@ -62,7 +43,6 @@ export default defineEventHandler(
       }
     }
   });
-  console.log(course)
 
   if (!course) {
     throw createError({

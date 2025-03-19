@@ -2,13 +2,6 @@
 import useCourseIndex from '~/composables/useCourseIndex';
 
 const course = await useCourseIndex();
-// const resetError = async (error) => {
-//     await navigateTo("/")
-//     error.value = null
-// }
-// const chapterPath = computed((courseid, chapterid) => {
-//  return /content/couse
-// })
 
 definePageMeta({
     middleware: 'auth'
